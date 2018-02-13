@@ -6,7 +6,7 @@
 	<groupId>br.edu.cse</groupId>
 	<artifactId>cidades</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>cidades</name>
 	<description>Demo project for Spring Boot</description>
