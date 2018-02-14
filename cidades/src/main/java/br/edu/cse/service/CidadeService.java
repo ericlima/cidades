@@ -1,8 +1,11 @@
 package br.edu.cse.service;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import br.edu.cse.entity.Cidade;
@@ -14,8 +17,13 @@ public class CidadeService {
 	@Autowired
 	private CidadeRepository repository;
 	
-	public Collection<Cidade> obtemCidades() {
-		return repository.findAll();
+	public Page<Cidade> obtemCidades(int pagina) {
+		
+		Sort sort = new Sort(new Sort.Order(Direction.ASC, "nome"));
+		
+		Pageable pageable = new PageRequest(pagina,10, sort);
+		
+		return repository.findAll(pageable);
 	}
 	
 	public Cidade obtemCidade(Long id) {
@@ -29,5 +37,9 @@ public class CidadeService {
 	public void exclui(Long id) {
 		repository.delete(id);
 	}	
+	
+	public Long registros() {
+		return repository.count();
+	}
 	
 }

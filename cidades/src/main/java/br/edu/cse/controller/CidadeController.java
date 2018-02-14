@@ -5,6 +5,7 @@ import java.util.Collection;
 import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,9 +21,15 @@ public class CidadeController {
 	@Autowired
 	private CidadeService service;
 	
-	@GetMapping("/cidades")
-	public Collection<Cidade> obtemCidades() {
-		return service.obtemCidades();
+	@GetMapping("/cidades/{pagina}")
+	public Collection<Cidade> obtemCidades(@PathVariable Long pagina) {
+		Page<Cidade> retorno = service.obtemCidades(pagina.intValue());
+		return retorno.getContent();
+	}
+	
+	@GetMapping("/cidades/paginas")
+	public Long obtemPaginas() {
+		return (service.registros()/10);
 	}
 	
 	@GetMapping("/cidade/{id}")
