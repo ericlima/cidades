@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import br.edu.cse.entity.Cidade;
 import br.edu.cse.entity.CidadeCombo;
+import br.edu.cse.entity.UfCombo;
 import br.edu.cse.repository.CidadeComboRepository;
 import br.edu.cse.repository.CidadeRepository;
 
@@ -52,6 +53,10 @@ public class CidadeService {
 	
 	public List<CidadeCombo> obtemCidades(String uf) {
 		return repositoryCombo.cidadesCombo(uf);
+	}
+	
+	public List<UfCombo> obtemUfs() {
+		return repositoryCombo.ufCombo();
 	}
 	
 }

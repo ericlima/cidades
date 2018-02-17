@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.cse.entity.Cidade;
 import br.edu.cse.entity.CidadeCombo;
+import br.edu.cse.entity.UfCombo;
 import br.edu.cse.service.CidadeService;
 
 @RestController
@@ -55,5 +56,10 @@ public class CidadeController {
 	public List<CidadeCombo> obtemCidadesCombo(@PathVariable String uf) {
 		return service.obtemCidades(uf);
 	}
-	
+
+	@GetMapping("/ufs/combo")
+	public List<UfCombo> obtemUfsCombo() {
+		return service.obtemUfs();
+	}
+
 }
