@@ -2,7 +2,7 @@ package br.edu.cse.entity;
 
 public class CidadeCombo {
 
-	private Long Id;
+	private Long id;
 	private String nome;
 	
 	public String getNome() {
@@ -12,10 +12,10 @@ public class CidadeCombo {
 		this.nome = nome;
 	}
 	public Long getId() {
-		return Id;
+		return id;
 	}
 	public void setId(Long id) {
-		Id = id;
+		id = id;
 	}
 	
 }
